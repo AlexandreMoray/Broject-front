@@ -1,0 +1,47 @@
+@import "../../../assets/style/colors.scss";
+
+.home-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.research-container {
+  width: 50vw;
+  height: 40px;
+  background-color: $BLACK_PRIMARY;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  padding: 5px 20px 5px 20px;
+
+  .research-input {
+    width: 50vw;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    color: $WHITE_PRIMARY;
+    font-size: 1.1em;
+    &::placeholder {
+      color: $WHITE_PRIMARY;
+      font-size: 1.1em;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    background-color: transparent;
+
+    .icon {
+      color: $WHITE_PRIMARY;
+      cursor: pointer;
+    }
+  }
+}
