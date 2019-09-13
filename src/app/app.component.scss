@@ -1,14 +1,10 @@
 @import '../assets/style/colors';
 @import '../assets/style/fonts';
 
-
-
 #main-container {
   background-color: $GREY_SECONDARY;
-  height: 85vh;
-  widht: 100%;
-  padding: 5vh;
-  padding-bottom: 0;
+  height: 90vh;
+  width: 100%;
 }
 
 // Navigation Header Style
@@ -20,6 +16,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  z-index: 100;
 
   .logo {
     cursor: pointer;
@@ -45,6 +42,8 @@
       margin-right: 10px;
       background-color: transparent;
       color: $WHITE_PRIMARY;
+      font-family: $TITLE_FONT;
+      font-size: 1.1em;
       border-radius: 0px;
     }
     button:hover {

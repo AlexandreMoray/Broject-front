@@ -1,4 +1,11 @@
-@import "assets/style/colors";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'assets/style/material-theme.scss';
+
+@include mat-core();
+
+$custom-theme-primary: mat-palette($mat-grey);
+$custom-theme-accent: mat-palette($mat-grey, A200, A100, A400);
+$custom-theme-warn: mat-palette($mat-grey);
 
 .global-container {
   width: 100%;
