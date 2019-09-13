@@ -13,6 +13,7 @@ import {MatIconModule} from "@angular/material/icon";
 import { RegisterComponent } from './components/register/register.component';
 import { SigninComponent } from './components/signin/signin.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ProjectsListComponent} from "./components/projects-list/projects-list.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     HomeComponent,
     ProjectComponent,
     RegisterComponent,
-    SigninComponent
+    SigninComponent,
+    ProjectsListComponent
   ],
   imports: [
     BrowserModule,

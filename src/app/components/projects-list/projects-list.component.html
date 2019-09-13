@@ -1,0 +1,16 @@
+<div class="projects-list-container">
+  <div class="list">
+    <div *ngFor="let p of projects" class="project-card">
+      <div class="icon">
+        <mat-icon>folder</mat-icon>
+      </div>
+      <div class="info">
+        <h2>{{p.name}}</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="add-button">
+    <mat-icon>add</mat-icon>
+  </div>
+</div>
