@@ -1,0 +1,26 @@
+@import "colors";
+
+.tag {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 10px;
+  color: $WHITE_PRIMARY;
+  width: fit-content;
+  height: fit-content;
+  box-shadow: 1px 1px 3px $BLACK_PRIMARY;
+  &.blue {
+    background-color: $BLUE;
+  }
+  &.red {
+    background-color: $RED;
+  }
+  &.green {
+    background-color: $GREEN;
+  }
+  mat-icon {
+    font-size: 1.3em;
+    margin-right: 5px;
+  }
+}

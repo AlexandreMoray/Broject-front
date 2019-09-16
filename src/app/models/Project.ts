@@ -1,37 +1,56 @@
+import {User} from "./User";
+import {Note} from "./Note";
 
 export class Project {
   /*
   id key
    */
-  protected id = null;
+  public id : number = null;
 
   /*
   Name of the project
    */
-  protected name = "";
+  public name : String = "";
+
+  /*
+  Progress on 100
+   */
+  public progress : number = 0;
 
   /*
   Starting date
    */
-  protected startingDate = new Date();
+  public startingDate : Date = new Date();
 
   /*
   Ending date (if any)
    */
-  protected endingDate = null;
+  public endingDate : Date = null;
 
   /*
   Boolean : true = active, false = archived
    */
-  protected active = true;
+  public active : boolean = true;
+
+  /*
+  Owner of the project
+   */
+  public owner : User = null;
 
   /*
   List of members owning the project
    */
-  protected members = [];
+  public members : Array<User> = [];
 
-  constructor(name) {
+  /*
+  Comments on the project
+   */
+  public feed : Array<Note> = [];
+
+  constructor(name : String,
+              creator : User) {
     this.name = name;
+    this.owner = creator;
   }
 
 }

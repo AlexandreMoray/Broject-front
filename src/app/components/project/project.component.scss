@@ -1,0 +1,91 @@
+@import "../../../assets/style/colors.scss";
+@import "../../../assets/style/fonts.scss";
+
+.project-container {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  display: flex;
+  flex-direction: row;
+
+  .right-container, .left-container {
+    width: 50%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-infos {
+    .title {
+      display: flex;
+      align-items: center;
+
+      mat-icon {
+        font-size: 2em;
+        margin-right: 20px;
+      }
+    }
+
+    mat-progress-bar {
+      height: 10px;
+      border-radius: 10px;
+
+      ::ng-deep .mat-progress-bar-fill::after {
+        background-color: $RED;
+      }
+    }
+
+    .progress {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .project-members {
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  .add-note form {
+    color: $WHITE_PRIMARY;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $BLACK_SECONDARY;
+    border-radius: 10px;
+
+    button {
+      width: 50%;
+      margin: auto;
+    }
+  }
+
+  .project-feed {
+    .note {
+      .content {
+        color: $BLACK_PRIMARY;
+        background-color: $WHITE_PRIMARY;
+        padding: 10px 20px 10px 20px;
+        box-shadow: 1px 1px 4px $BLACK_PRIMARY;
+        border-radius: 0px 10px 0px 10px;
+        .top {
+          display: flex;
+          justify-content: space-between;
+          h4 {
+            margin: 5px !important;
+          }
+        }
+      }
+      .infos {
+        display: flex;
+        justify-content: flex-end;
+        margin: 10px;
+      }
+    }
+  }
+}

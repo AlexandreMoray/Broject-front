@@ -57,12 +57,11 @@
     &:focus {
       outline: none;
     }
-
   }
 
   button {
     background-color: transparent;
-    min-width: 10px !important;
+    min-width: 15px !important;
     padding: 0;
     .icon {
       color: $WHITE_PRIMARY;

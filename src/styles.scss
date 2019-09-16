@@ -1,5 +1,8 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import 'assets/style/material-theme.scss';
+@import "assets/style/fonts.scss";
+@import "assets/style/components.scss";
+
 
 @include mat-core();
 
@@ -12,4 +15,11 @@ $custom-theme-warn: mat-palette($mat-grey);
   height: 100%;
   margin: 0px;
   padding: 0px;
+}
+
+*:not(mat-icon){
+  font-family: $TEXT_FONT;
+}
+h1, h2, h3, h4 {
+  font-family: $TITLE_FONT;
 }

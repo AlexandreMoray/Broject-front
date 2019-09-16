@@ -14,6 +14,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { SigninComponent } from './components/signin/signin.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ProjectsListComponent} from "./components/projects-list/projects-list.component";
+import {FormsModule} from "@angular/forms";
+import {MatSelect, MatSelectModule} from "@angular/material/select";
+import {MatOptionModule} from "@angular/material/core";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { NewProjectComponent } from './components/new-project/new-project.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,8 @@ import {ProjectsListComponent} from "./components/projects-list/projects-list.co
     ProjectComponent,
     RegisterComponent,
     SigninComponent,
-    ProjectsListComponent
+    ProjectsListComponent,
+    NewProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +39,11 @@ import {ProjectsListComponent} from "./components/projects-list/projects-list.co
     MatInputModule,
     MatIconModule,
     BrowserAnimationsModule,
+    FormsModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatProgressBarModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

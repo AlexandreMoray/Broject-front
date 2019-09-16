@@ -1,10 +1,10 @@
 <div class="home-container">
-  <form>
+  <form (ngSubmit)="projectSearch()">
     <div class="research-container">
-        <input class="research-input" type="text" placeholder="Search for a project !">
-          <button mat-button type="submit">
-            <mat-icon class="icon">send</mat-icon>
-          </button>
+      <input class="research-input" type="text" placeholder="Search for a project !" (input)="projectField=$event.target.value">
+      <button mat-button type="submit">
+        <mat-icon class="icon">send</mat-icon>
+      </button>
     </div>
   </form>
 </div>

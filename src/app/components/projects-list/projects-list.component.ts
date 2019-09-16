@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Project} from "../../models/Project";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-projects-list',
@@ -8,15 +9,16 @@ import {Project} from "../../models/Project";
 })
 export class ProjectsListComponent implements OnInit {
 
-  public projects = [];
+  public projects : Array<Project> = [];
 
   constructor() {
   }
 
   ngOnInit() {
-    this.projects.push(new Project("Premier Projet"));
-    this.projects.push(new Project("Deuxième Test"));
-    this.projects.push(new Project("Stop it"));
+    let user = new User("Mike");
+    this.projects.push(new Project("Premier Projet", user));
+    this.projects.push(new Project("Deuxième Test", user));
+    this.projects.push(new Project("Stop it", user));
   }
 
 }

@@ -1,1 +1,91 @@
-<p>project works!</p>
+<div class="project-container">
+  <div class="right-container">
+    <div class="project-infos">
+      <div class="title">
+        <div class="Logo">
+          <mat-icon>group</mat-icon>
+        </div>
+        <h1>{{selectedProject.name}}</h1>
+      </div>
+      <mat-progress-bar mode="determinate" [value]="selectedProject.progress"></mat-progress-bar>
+      <div class="progress">
+        <div class="dates">
+          <div class="tag green">
+            <mat-icon>calendar_today</mat-icon>
+            Starting : {{selectedProject.startingDate | date:'dd/MM/yyyy'}}
+          </div>
+          <div class="tag green">
+            <mat-icon>calendar_today</mat-icon>
+            Ending : {{selectedProject.startingDate | date:'dd/MM/yyyy'}}
+          </div>
+        </div>
+        <div class="tag red ">
+          <mat-icon>trending_up</mat-icon>
+          Progress : {{selectedProject.progress}}%
+        </div>
+      </div>
+    </div>
+    <div class="project-members">
+      <h3>Project team</h3>
+      <div class="list">
+        <div class="tag blue">
+          <mat-icon>supervised_user_circle</mat-icon>
+          {{selectedProject.owner.name}}
+        </div>
+        <div *ngFor="let member of selectedProject.members" class="tag blue">
+          <mat-icon>supervisor_account</mat-icon>
+          {{member.name}}
+        </div>
+      </div>
+    </div>
+    <div class="add-note">
+      <h3>Add a note</h3>
+      <form>
+        <mat-form-field>
+          <input matInput class="title" placeholder="Title"/>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput class="note" placeholder="Write your note here..."></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Select priority">
+            <mat-option value="1">Major</mat-option>
+            <mat-option value="2">Important</mat-option>
+            <mat-option value="3">Basic</mat-option>
+            <mat-option value="4">Minor</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-stroked-button class="add" type="submit">ADD</button>
+      </form>
+    </div>
+  </div>
+  <div class="left-container">
+    <div class="project-feed">
+      <h2>Feed</h2>
+      <div class="list" *ngFor="let note of selectedProject.feed">
+        <div class="note">
+          <div class="content">
+            <div class="top">
+              <h4>{{note.title}}</h4>
+              <div class="tag red">
+                <mat-icon>star</mat-icon>
+                {{note.priority}}
+              </div>
+            </div>
+            <p>{{note.comment}}</p>
+          </div>
+          <div class="infos">
+            <div class="tag blue">
+              <mat-icon>supervisor_account</mat-icon>
+              {{note.owner.name}}
+            </div>
+            <div class="tag green">
+              <mat-icon>calendar_today</mat-icon>
+              {{note.date | date:'dd/MM/yyyy'}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
