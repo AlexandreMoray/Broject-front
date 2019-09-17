@@ -1,37 +1,72 @@
 @import "../../../assets/style/colors.scss";
 
+$titleMargin: 20px;
+$marginBetweenProjects: 30px;
+
 .projects-list-container {
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+h1 {
+  margin-left: $titleMargin;
 }
 
 .list {
   width: 100%;
   height: 100%;
-  padding: 20px;
+  margin-left: $titleMargin;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
 
   .project-card {
-    width: 80vw;
-    height: 60px;
+    width: 50vw;
+    height: 10vw;
+    padding: 5px;
     cursor: pointer;
-    margin: 5px;
+    margin-bottom: $marginBetweenProjects;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid $BLACK_PRIMARY;
-    border-radius: 5px;
+    flex-direction: column;
+    /*border: 2px solid $BLACK_PRIMARY;
+    border-radius: 5px;*/
 
-    .icon {
+    .projectInformation {
+      width: 100%;
+      height: 80%;
+      display: flex;
+      margin: 0;
+      padding: 0;
 
+      .projectLogo {
+        max-width: 25%;
+        height: 100%;
+      }
+      .projectImage {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    ul {
+      width: 50%;
+      margin: 0px 0px 0px 20px;
+      padding: 0;
+      list-style: none;
+
+      li {
+        margin-bottom: 5px;
+      }
+    }
+    h2 {
+      padding: 0;
+      margin: 0;
     }
   }
-
 }
 
 .add-button {
@@ -47,5 +82,13 @@
   justify-content: center;
   align-items: center;
   box-shadow: 1px 1px 4px $BLACK_PRIMARY;
+}
 
+mat-progress-bar {
+  height: 10px;
+  border-radius: 1px;
+
+  ::ng-deep .mat-progress-bar-fill::after {
+    background-color: $RED;
+  }
 }

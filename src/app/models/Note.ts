@@ -8,8 +8,8 @@ export class Note {
   public priority : number = 0;
   public comment : String = "";
 
-  constructor(creator: User,
-              title : String) {
+  // tslint:disable-next-line:ban-types
+  constructor(creator: User, title: String) {
     this.title = title;
     this.owner = creator;
     this.comment = "Bla bla bla y'a les cookies dans le sac !";

@@ -1,56 +1,64 @@
-import {User} from "./User";
-import {Note} from "./Note";
+import {User} from './User';
+import {Note} from './Note';
 
 export class Project {
   /*
   id key
    */
-  public id : number = null;
+  public id: number = null;
 
   /*
   Name of the project
    */
-  public name : String = "";
+  // tslint:disable-next-line:ban-types
+  public name: String = '';
 
   /*
   Progress on 100
    */
-  public progress : number = 0;
+  public progress = 0;
 
   /*
   Starting date
    */
-  public startingDate : Date = new Date();
+  public startingDate: Date = new Date();
 
   /*
   Ending date (if any)
    */
-  public endingDate : Date = null;
+  public endingDate: Date = null;
 
   /*
   Boolean : true = active, false = archived
    */
-  public active : boolean = true;
+  public active = true;
 
   /*
   Owner of the project
    */
-  public owner : User = null;
+  public owner: User = null;
 
   /*
   List of members owning the project
    */
-  public members : Array<User> = [];
+  public members: Array<User> = [];
 
   /*
   Comments on the project
    */
-  public feed : Array<Note> = [];
+  public feed: Array<Note> = [];
 
-  constructor(name : String,
-              creator : User) {
+  // tslint:disable-next-line:ban-types
+
+
+  constructor(name: string, progress: number, startingDate: Date, endingDate: Date, active: boolean, owner: User, members: Array<User>, feed: Array<Note>) {
     this.name = name;
-    this.owner = creator;
+    this.progress = progress;
+    this.startingDate = startingDate;
+    this.endingDate = endingDate;
+    this.active = active;
+    this.owner = owner;
+    this.members = members;
+    this.feed = feed;
   }
-
 }
