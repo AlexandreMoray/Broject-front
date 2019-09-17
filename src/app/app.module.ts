@@ -22,6 +22,8 @@ import { NewProjectComponent } from './components/new-project/new-project.compon
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSliderModule} from "@angular/material/slider";
+import {MatRadioModule} from "@angular/material/radio";
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import {MatSliderModule} from "@angular/material/slider";
     RegisterComponent,
     SigninComponent,
     ProjectsListComponent,
-    NewProjectComponent
+    NewProjectComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import {MatSliderModule} from "@angular/material/slider";
     MatTabsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSliderModule
+    MatSliderModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

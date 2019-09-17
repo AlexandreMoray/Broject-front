@@ -21,28 +21,22 @@
   margin: 20px;
   color: $BLACK_PRIMARY;
   background-color: $WHITE_PRIMARY;
+  box-shadow: 2px 3px 8px $BLACK_PRIMARY;
   padding: 0px 20px 0px 20px;
-  height: 75vh;
+  height: max-content;
   border-radius: 20px;
+
   * {
-    color: $BLACK_PRIMARY;
+    color: $BLACK_SECONDARY;
   }
-}
 
-.mat-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: $BLACK_PRIMARY;
-
-  form {
+  .mat-content {
+    color: $BLACK_PRIMARY;
     width: 100%;
-    height: 100%;
+    height: max-content;
     display: flex;
     flex-direction: row;
+
     .left-container, .right-container {
       width: 50%;
       padding: 20px;
@@ -50,15 +44,34 @@
       flex-direction: column;
       justify-content: center;
 
+      .container1 {
+        width: 60%;
+        margin: 0 15% 0 15%;
+        padding: 0 5% 0 5%;
+        border-left: 2px solid $BLACK_SECONDARY;
+        display: flex;
+        flex-direction: column;
+        h2 {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  button.next {
+    background-color: $BLACK_PRIMARY;
+    float: right;
+    margin-bottom: 20px;
+    span {
+      color: $WHITE_PRIMARY !important;
     }
   }
 }
 
 
-
 /* Material Components Style */
-.mat-tab-body-wrapper {
-  height: max-content;
+.mat-tab-body-wrapper, .mat-tab-group {
+  height: 100%;
 }
 .mat-tab-label {
   min-width: 25vw !important;
@@ -83,6 +96,19 @@
 .mat-form-field-appearance-legacy .mat-form-field-underline {
   background-color: $BLACK_PRIMARY;
 }
-.mat-slider-thumb, mat-slider-focus-ring, .mat-slider-ticks-container {
+
+.mat-slider-thumb, mat-slider-focus-ring, .mat-slider-ticks-container, .mat-slider-thumb-label {
+  background-color: $BLACK_PRIMARY !important;
+}
+.mat-slider-thumb-label-text {
+  color: $WHITE_PRIMARY !important;
+}
+.mat-radio-container {
+  margin-left: 10px;
+}
+.mat-radio-outer-circle {
+  background-color: $GREY_PRIMARY;
+}
+.mat-radio-inner-circle {
   background-color: $BLACK_PRIMARY !important;
 }
