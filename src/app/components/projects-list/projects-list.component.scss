@@ -26,26 +26,29 @@
     align-items: center;
     border: 2px solid $BLACK_PRIMARY;
     border-radius: 5px;
-
-    .icon {
-
-    }
   }
-
 }
 
 .add-button {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 40px;
   position: fixed;
   cursor: pointer;
-  bottom: 30px;
-  right: 30px;
-  background-color: $WHITE_PRIMARY;
+  bottom: 35px;
+  right: 35px;
+  background-color: $RED;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 1px 1px 4px $BLACK_PRIMARY;
+  outline: transparent;
 
+  mat-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $WHITE_PRIMARY;
+    font-size: 1.8em;
+  }
 }

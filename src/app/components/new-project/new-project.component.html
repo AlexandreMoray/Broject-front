@@ -1,1 +1,53 @@
-<p>new-project works!</p>
+<div class="new-project-container">
+  <h1>Create a new Project</h1>
+  <div class="new-project-tabs" mat-align-tabs="center">
+    <mat-tab-group>
+      <mat-tab label="Informations">
+        <div class="mat-content">
+          <form>
+            <div class="left-container">
+              <mat-form-field>
+                <input matInput class="title" placeholder="Project name"/>
+              </mat-form-field>
+              <mat-form-field>
+                <textarea matInput class="description" placeholder="Project description"></textarea>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Select fields">
+                  <mat-option value="1">Software</mat-option>
+                  <mat-option value="2">Web app</mat-option>
+                  <mat-option value="3">Management</mat-option>
+                  <mat-option value="4">Intern study</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="right-container">
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker1" placeholder="Starting date">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker2" placeholder="Ending date">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+              <mat-slider min="1" max="100" step="1" value="0"></mat-slider>
+              <button mat-stroked-button class="add" type="submit">next</button>
+            </div>
+          </form>
+        </div>
+      </mat-tab>
+      <mat-tab label="Contributors">
+        <div class="mat-content">
+          s^lfkaemùlf,
+        </div>
+      </mat-tab>
+      <mat-tab label="Settings">
+        <div class="mat-content">
+          hellof lzdkfjlz
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

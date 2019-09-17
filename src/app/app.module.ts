@@ -15,10 +15,13 @@ import { SigninComponent } from './components/signin/signin.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ProjectsListComponent} from "./components/projects-list/projects-list.component";
 import {FormsModule} from "@angular/forms";
-import {MatSelect, MatSelectModule} from "@angular/material/select";
-import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { NewProjectComponent } from './components/new-project/new-project.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatSliderModule} from "@angular/material/slider";
 
 @NgModule({
   declarations: [
@@ -42,8 +45,11 @@ import { NewProjectComponent } from './components/new-project/new-project.compon
     FormsModule,
     MatSelectModule,
     MatOptionModule,
-    MatProgressBarModule
-
+    MatProgressBarModule,
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

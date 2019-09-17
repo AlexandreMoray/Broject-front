@@ -1,0 +1,88 @@
+@import "../../../assets/style/colors.scss";
+
+.new-project-container {
+  width:100%;
+  height:100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    text-align: center;
+    margin: 15px;
+  }
+}
+
+.new-project-tabs {
+  border-top: 3px solid black;
+  min-width: 500px;
+  max-width: 80vw;
+  margin: 20px;
+  color: $BLACK_PRIMARY;
+  background-color: $WHITE_PRIMARY;
+  padding: 0px 20px 0px 20px;
+  height: 75vh;
+  border-radius: 20px;
+  * {
+    color: $BLACK_PRIMARY;
+  }
+}
+
+.mat-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $BLACK_PRIMARY;
+
+  form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    .left-container, .right-container {
+      width: 50%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+    }
+  }
+}
+
+
+
+/* Material Components Style */
+.mat-tab-body-wrapper {
+  height: max-content;
+}
+.mat-tab-label {
+  min-width: 25vw !important;
+  padding: 5px;
+  background-color: transparent;
+  color: $BLACK_PRIMARY;
+  font-weight: 700;
+
+  &.mat-tab-label-active {
+    background-color: $GREY_SECONDARY;
+    z-index: 10;
+  }
+}
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  height: 0px;
+}
+.mat-tab-label-container {
+  border-bottom: 2px solid $BLACK_SECONDARY;
+  border-radius: 0px 0px 10px 10px;
+  z-index: 1;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: $BLACK_PRIMARY;
+}
+.mat-slider-thumb, mat-slider-focus-ring, .mat-slider-ticks-container {
+  background-color: $BLACK_PRIMARY !important;
+}

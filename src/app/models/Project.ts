@@ -47,6 +47,11 @@ export class Project {
    */
   public feed : Array<Note> = [];
 
+  /*
+  Visibility of the project
+   */
+  public private : boolean = false;
+
   constructor(name : String,
               creator : User) {
     this.name = name;
