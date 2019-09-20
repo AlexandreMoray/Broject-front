@@ -2,12 +2,12 @@
   <div class="form">
     <h2>SIGN IN !</h2>
     <mat-form-field>
-      <input matInput class="Email" type="email" placeholder="Email">
+      <input matInput class="Email" type="email" placeholder="Email" [(ngModel)]="login.email">
     </mat-form-field>
     <mat-form-field>
-      <input matInput class="Password" type="password" placeholder="Password">
+      <input matInput class="Password" type="password" placeholder="Password" [(ngModel)]="login.password">
     </mat-form-field>
-    <button mat-button type="submit">
+    <button mat-button (click)="tryLogin()">
       Sign in
     </button>
   </div>

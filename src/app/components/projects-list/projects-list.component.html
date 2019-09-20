@@ -1,16 +1,29 @@
 <div class="projects-list-container">
+
+  <h1>Mes Projects</h1>
+
   <div class="list">
     <div *ngFor="let p of projects" class="project-card">
-      <div class="icon">
-        <mat-icon>folder</mat-icon>
+      <h2> {{p.name}}</h2>
+      <div class="projectInformation">
+        <div class="projectLogo">
+          <img src="../../../assets/images/plage.JPG" class="projectImage">
+        </div>
+
+        <ul>
+          <li>Date de début : {{p.startingDate.toLocaleDateString()}}</li>
+          <li>Date de fin : {{p.endingDate.toLocaleDateString()}}</li>
+          <li>Notes : {{p.feed.length}}</li>
+        </ul>
       </div>
-      <div class="info">
-        <h2>{{p.name}}</h2>
+
+      <div class="projectProgress">
+        <mat-progress-bar mode="determinate" [value]="p.progress" (click)="onProgressClicked()" ></mat-progress-bar>
       </div>
     </div>
   </div>
 
-  <div class="add-button">
+  <div class="add-button" routerLink="/project/new">
     <mat-icon>add</mat-icon>
   </div>
 </div>
