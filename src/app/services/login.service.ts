@@ -1,17 +1,19 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {User} from "../models/User";
-import {Observable} from "rxjs";
+import {environment} from "../../environments/environment";
+import {HttpClient, HttpParams} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
+  public url = environment.back + "/users/signin";
   public connectEvent : EventEmitter<boolean> = new EventEmitter<boolean>();
   private connected : boolean = false;
   private actualUser : User = null;
 
-  constructor() {
+  constructor(private http : HttpClient) {
   }
 
   public connect(email: String, password: String) {
@@ -28,6 +30,13 @@ export class LoginService {
         this.connectEvent.emit(this.connected);
       }
     }
+
+    let options = {
+      headers : {},
+      params : new HttpParams({email : email, password : password});
+    };
+    this.http.get(this.url, options);
+
   }
 
   public disconnect() {

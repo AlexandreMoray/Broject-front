@@ -10,30 +10,32 @@ import {environment} from "../../environments/environment";
 })
 export class ProjectService {
 
-  private back = environment.back;
+  private url = environment.back + "/projects";
 
   constructor(private http : HttpClient) {
   }
 
   get(id: number) {
 
-    return this.http.get(this.back + '/projects/'+ id);
+    return this.http.get(this.url + id);
   }
 
   getAll() {
 
-    return this.http.get(this.back + '/projects');
+    return this.http.get(this.url);
   }
 
-  post() {
+  post(project : Project) {
 
+    return this.http.post(this.url, "")
   }
 
-  put(id: number) {
+  put(id: number, project : Project) {
 
+    return this.http.post(this.url + "/" + id, "").subscribe();
   }
 
   delete(id: number) {
-
+    return this.http.delete(this.url + "/" + id);
   }
 }
