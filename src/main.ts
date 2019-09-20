@@ -7,6 +7,9 @@ import { environment } from './environments/environment';
 if (environment.production) {
   enableProdMode();
 }
+if (!environment.production) {
+  const BACK_ADDRESS = "http://localhost:8080";
+}
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
