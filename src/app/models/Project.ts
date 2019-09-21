@@ -65,6 +65,7 @@ export class Project {
     project.progress = fetchedProject.progression;
     project.visibility = fetchedProject.visibility == 1 ? true : false;
     project.feed = new Array<Note>();
+    project.members = new Array<User>();
     return project;
   }
 

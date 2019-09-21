@@ -27,12 +27,12 @@ export class ProjectService {
 
   post(project : Project) {
 
-    return this.http.post(this.url, "")
+    return this.http.post(this.url, project);
   }
 
   put(id: number, project : Project) {
 
-    return this.http.post(this.url + "/" + id, "").subscribe();
+    return this.http.post(this.url + "/" + id, project).subscribe();
   }
 
   delete(id: number) {

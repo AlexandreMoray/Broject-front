@@ -6,12 +6,32 @@ export class Note {
   public date : Date = new Date();
   public owner : User = null;
   public priority : number = 0;
-  public comment : String = "";
+  public message : String = "";
 
-  // tslint:disable-next-line:ban-types
-  constructor(creator: User, title: String) {
+  constructor(creator: User, title: String, priority : number, message : String) {
     this.title = title;
+    this.date = new Date();
     this.owner = creator;
-    this.comment = "Bla bla bla y'a les cookies dans le sac !";
+    this.priority = priority;
+    this.message = message;
+  }
+
+  formatFromBack(fetchedNote : any) {
+
+    return fetchedNote;
+  }
+
+  formatFromFront(projectId : number) {
+    const formatedNote = {
+      title : this.title,
+      date : this.date,
+      owner : this.owner,
+      priority : this.priority,
+      message : this.message,
+      projectId : projectId
+    };
+
+    console.log(formatedNote);
+    return formatedNote;
   }
 }

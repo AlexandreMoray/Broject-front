@@ -1,6 +1,6 @@
 <div class="project-container">
   <div class="right-container">
-    <div class="project-infos">
+    <div class="project-infos" *ngIf="selectedProject">
       <div class="title">
         <div class="Logo">
           <mat-icon>group</mat-icon>
@@ -40,15 +40,15 @@
     </div>
     <div class="add-note">
       <h3>Add a note</h3>
-      <form>
+      <form (submit)="addNote()">
         <mat-form-field>
-          <input matInput class="title" placeholder="Title"/>
+          <input matInput name="title" class="title" placeholder="Title" [(ngModel)]="noteForm.title"/>
         </mat-form-field>
         <mat-form-field>
-          <textarea matInput class="note" placeholder="Write your note here..."></textarea>
+          <textarea matInput name="note" class="note" placeholder="Write your note here..." [(ngModel)]="noteForm.message"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Select priority">
+          <mat-select name="priority" placeholder="Select priority" [(ngModel)]="noteForm.priority">
             <mat-option value="1">Major</mat-option>
             <mat-option value="2">Important</mat-option>
             <mat-option value="3">Basic</mat-option>
