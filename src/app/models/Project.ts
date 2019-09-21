@@ -28,6 +28,10 @@ export class Project {
    */
   public active = true;
   /*
+  Boolean : true = public, false = private
+   */
+  public visibility = false;
+  /*
   Owner of the project
    */
   public owner: User = null;
@@ -41,7 +45,7 @@ export class Project {
   public feed: Array<Note> = [];
   // tslint:disable-next-line:ban-types
 
-  constructor(name: string, owner: User, progress?: number, startingDate?: Date, endingDate?: Date, active?: boolean, members?: Array<User>, feed?: Array<Note>) {
+  constructor(name: String, owner: User, progress?: number, startingDate?: Date, endingDate?: Date, active?: boolean, members?: Array<User>, feed?: Array<Note>) {
     this.name = name;
     this.progress = progress;
     this.startingDate = startingDate;
@@ -50,6 +54,18 @@ export class Project {
     this.owner = owner;
     this.members = members;
     this.feed = feed;
+  }
+
+  public static formatFromBack(fetchedProject : any) {
+    let project : Project = new Project(fetchedProject.name, fetchedProject.owner);
+    project.id = fetchedProject.id;
+    project.startingDate = new Date(fetchedProject.startingDate)
+    project.endingDate = new Date(fetchedProject.endingDate)
+    project.active = fetchedProject.active ? true : false;
+    project.progress = fetchedProject.progression;
+    project.visibility = fetchedProject.visibility == 1 ? true : false;
+    project.feed = new Array<Note>();
+    return project;
   }
 
 

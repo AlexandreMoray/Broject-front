@@ -19,13 +19,20 @@ export class ProjectsListComponent implements OnInit {
 
   ngOnInit() {
     this.loadProjects();
-    this.projectService.get(1).subscribe( p => {console.log(p)});
   }
 
   loadProjects() {
     this.projectService.getAll().subscribe(
       (fetchedProjects : Array<Project>) => {
-        this.projects = fetchedProjects;
+        console.log(fetchedProjects);
+
+        fetchedProjects.forEach(
+          proj => {
+            this.projects.push(Project.formatFromBack(proj));
+          }
+        )
+
+        console.log(this.projects);
       }
     )
   }

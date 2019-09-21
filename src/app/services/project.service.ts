@@ -17,7 +17,7 @@ export class ProjectService {
 
   get(id: number) {
 
-    return this.http.get(this.url + id);
+    return this.http.get(this.url + "/" + id);
   }
 
   getAll() {

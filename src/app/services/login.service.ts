@@ -33,7 +33,7 @@ export class LoginService {
 
     let options = {
       headers : {},
-      params : new HttpParams({email : email, password : password});
+      params : new HttpParams({})
     };
     this.http.get(this.url, options);
 
