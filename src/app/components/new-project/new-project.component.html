@@ -6,13 +6,13 @@
           <div class="mat-content">
             <div class="left-container">
               <mat-form-field>
-                <input matInput class="title" placeholder="Project name"/>
+                <input matInput class="title" placeholder="Project name" [(ngModel)] = "projectToAdd.name"/>
               </mat-form-field>
               <mat-form-field>
-                <textarea matInput class="description" placeholder="Project description"></textarea>
+                <textarea matInput class="description" placeholder="Project description" [(ngModel)]="projectToAdd.description"></textarea>
               </mat-form-field>
               <mat-form-field>
-                <mat-select placeholder="Select category">
+                <mat-select placeholder="Select category" [(ngModel)]="projectToAdd.category">
                   <mat-option value="1">Software</mat-option>
                   <mat-option value="2">Web app</mat-option>
                   <mat-option value="3">Management</mat-option>
@@ -22,22 +22,22 @@
             </div>
             <div class="right-container">
               <mat-form-field>
-                <input matInput [matDatepicker]="picker1" placeholder="Starting date">
+                <input matInput [matDatepicker]="picker1" placeholder="Starting date" [(ngModel)]="projectToAdd.startingDate">
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
               </mat-form-field>
               <mat-form-field>
-                <input matInput [matDatepicker]="picker2" placeholder="Ending date">
+                <input matInput [matDatepicker]="picker2" placeholder="Ending date" [(ngModel)]="projectToAdd.endingDate">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
               </mat-form-field>
               <br/> Progress:
-              <mat-slider
+              <mat-slider [(ngModel)]="projectToAdd.progress"
                 thumbLabel
                 [displayWith]="formatLabel"
                 tickInterval="1"
                 min="0"
-                max="100"></mat-slider>
+                max="100" name="projectProgress" ngModel></mat-slider>
             </div>
           </div>
           <button mat-stroked-button class="next" (click)="goNext(1)">next</button>
@@ -48,9 +48,9 @@
                 <form>
                   <h3>Add a contributor:</h3>
                   <mat-form-field>
-                    <input matInput placeholder="User alias"/>
+                    <input matInput placeholder="User alias" name="userAlias" [(ngModel)] = "newContributor"/>
                   </mat-form-field>
-                  <button mat-stroked-button type="submit">ADD</button>
+                  <button mat-stroked-button type="submit" (click)="addToMemberList()">ADD</button>
                 </form>
             </div>
             <div class="right-container">
@@ -71,17 +71,17 @@
           <div class="mat-content">
             <div class="right-container">
               <h3>Visibility:</h3>
-              <mat-radio-group aria-label="Select visibility">
+              <mat-radio-group aria-label="Select visibility" [(ngModel)]="projectToAdd.visibility">
                 <mat-radio-button value="1">Public</mat-radio-button>
                 <mat-radio-button value="2">Private</mat-radio-button>
               </mat-radio-group>
             </div>
             <div class="left-container">
               <h3>Project logo:</h3>
-              <input type="file" name="image"  />
+              <input type="file" name="image"/>
             </div>
           </div>
-          <button mat-stroked-button class="next" (click)="addProject()">CREATE PROJECT</button>
+          <button mat-stroked-button class="next" (click)="onSubmit()" >CREATE PROJECT</button>
         </mat-tab>
     </mat-tab-group>
   </div>

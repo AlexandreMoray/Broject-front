@@ -11,7 +11,7 @@
         </div>
 
         <ul>
-          <li>Date de début : {{p.startingDate.toLocaleDateString()}}</li>
+          <li>Date de début : {{p.startingDate | date:'dmy'}}</li>
           <li>Date de fin : {{p.endingDate.toLocaleDateString()}}</li>
           <li>Notes : {{p.feed.length}}</li>
         </ul>
