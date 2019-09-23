@@ -1,12 +1,12 @@
 import {User} from "./User";
 
 export class Note {
-  public id : number = null;
-  public title : String = "";
-  public date : Date = new Date();
-  public owner : User = null;
-  public priority : number = 0;
-  public message : String = "";
+  public id : number;
+  public title : String;
+  public date : Date;
+  public owner : User;
+  public priority : number;
+  public message : String;
 
   constructor(creator: User, title: String, priority : number, message : String) {
     this.title = title;
@@ -25,7 +25,7 @@ export class Note {
     const formatedNote = {
       title : this.title,
       date : this.date,
-      owner : this.owner,
+      owner : this.owner.id,
       priority : this.priority,
       message : this.message,
       projectId : projectId
