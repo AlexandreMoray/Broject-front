@@ -26,7 +26,6 @@ export class ProjectService {
   }
 
   post(project : Project) {
-
     return this.http.post(this.url, project);
   }
 
@@ -38,4 +37,5 @@ export class ProjectService {
   delete(id: number) {
     return this.http.delete(this.url + "/" + id);
   }
+
 }
