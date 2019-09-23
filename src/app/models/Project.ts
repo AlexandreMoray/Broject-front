@@ -9,28 +9,31 @@ export class Project {
   /*
   Name of the project
    */
-  // tslint:disable-next-line:ban-types
-  public name: String = '';
+  public name: String;
   /*
   Progress on 100
    */
-  public progress = 0;
+  public progress : number;
   /*
   Starting date
    */
-  public startingDate: Date = new Date();
+  public startingDate: Date;
   /*
   Ending date (if any)
    */
-  public endingDate: Date = null;
+  public endingDate: Date;
   /*
   Boolean : true = active, false = archived
    */
-  public active = true;
+  public active : boolean;
   /*
   Boolean : true = public, false = private
    */
-  public visibility = false;
+  public visibility : boolean;
+  /*
+  Description explaining the project
+   */
+  public description : String;
   /*
   Owner of the project
    */
@@ -38,12 +41,11 @@ export class Project {
   /*
   List of members owning the project
    */
-  public members: Array<User> = [];
+  public members: Array<User>;
   /*
   Comments on the project
    */
-  public feed: Array<Note> = [];
-  // tslint:disable-next-line:ban-types
+  public feed: Array<Note>;
 
   constructor(name: String, owner: User, progress?: number, startingDate?: Date, endingDate?: Date, active?: boolean, members?: Array<User>, feed?: Array<Note>) {
     this.name = name;
@@ -64,6 +66,7 @@ export class Project {
     project.active = fetchedProject.active ? true : false;
     project.progress = fetchedProject.progression;
     project.visibility = fetchedProject.visibility == 1 ? true : false;
+    project.description = fetchedProject.description;
     project.feed = new Array<Note>();
     project.members = new Array<User>();
     return project;

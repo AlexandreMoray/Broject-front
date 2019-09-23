@@ -1,6 +1,6 @@
-<div class="project-container">
+<div class="project-container" *ngIf="selectedProject">
   <div class="right-container">
-    <div class="project-infos" *ngIf="selectedProject">
+    <div class="project-infos">
       <div class="title">
         <div class="Logo">
           <mat-icon>group</mat-icon>
@@ -23,6 +23,10 @@
           <mat-icon>trending_up</mat-icon>
           Progress : {{selectedProject.progress}}%
         </div>
+      </div>
+      <div class="description">
+        <h3>Description</h3>
+        <p>{{selectedProject.description}}</p>
       </div>
     </div>
     <div class="project-members">
@@ -69,15 +73,15 @@
               <h4>{{note.title}}</h4>
               <div class="tag red">
                 <mat-icon>star</mat-icon>
-                {{note.priority}}
+                {{this.translatePriority(note.priority)}}
               </div>
             </div>
-            <p>{{note.comment}}</p>
+            <p>{{note.message}}</p>
           </div>
           <div class="infos">
             <div class="tag blue">
               <mat-icon>supervisor_account</mat-icon>
-              {{note.owner.name}}
+              {{note.creator.alias}}
             </div>
             <div class="tag green">
               <mat-icon>calendar_today</mat-icon>

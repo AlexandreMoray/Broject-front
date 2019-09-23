@@ -4,34 +4,37 @@ export class Note {
   public id : number;
   public title : String;
   public date : Date;
-  public owner : User;
+  public creator : User;
   public priority : number;
   public message : String;
 
   constructor(creator: User, title: String, priority : number, message : String) {
     this.title = title;
     this.date = new Date();
-    this.owner = creator;
+    this.creator = creator;
     this.priority = priority;
     this.message = message;
   }
 
-  formatFromBack(fetchedNote : any) {
+  public formatFromFront(projectId : number) {
 
-    return fetchedNote;
-  }
-
-  formatFromFront(projectId : number) {
     const formatedNote = {
       title : this.title,
       date : this.date,
-      owner : this.owner.id,
+      creator : this.creator,
       priority : this.priority,
       message : this.message,
       projectId : projectId
     };
 
-    console.log(formatedNote);
+    console.log("->" + formatedNote);
     return formatedNote;
+  }
+
+  public static formatFromBack(fetchedNote : any) {
+    let note = new Note(fetchedNote.creator, fetchedNote.title, fetchedNote.priority, fetchedNote.message);
+    note.id = fetchedNote.id;
+    note.date = fetchedNote.date ? fetchedNote.date : new Date();
+    return note;
   }
 }

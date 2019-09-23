@@ -21,7 +21,7 @@ export class NoteService {
 
   getAllFromProject(id: number) {
 
-    return this.http.get(this.url + "/" + id);
+    return this.http.get(this.url + "/projectId/" + id);
   }
 
   post(note : any) {

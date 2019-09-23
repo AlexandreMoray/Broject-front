@@ -4,7 +4,7 @@
 .project-container {
   width: 100%;
   height: 100%;
-  overflow: scroll;
+  overflow: hidden;
   display: flex;
   flex-direction: row;
 
@@ -14,8 +14,13 @@
     display: flex;
     flex-direction: column;
   }
+  .left-container {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
 
   .project-infos {
+
     .title {
       display: flex;
       align-items: center;
@@ -50,18 +55,31 @@
     }
   }
 
-  .add-note form {
-    color: $WHITE_PRIMARY;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: $BLACK_SECONDARY;
-    border-radius: 10px;
+  .add-note {
 
-    button {
-      width: 50%;
-      margin: auto;
+    margin-top: 20px;
+
+    h3 {
+      margin: 0px;
+      background-color: $BLACK_SECONDARY;
+      border-radius: 10px 10px 0 0 ;
+      color: $WHITE_PRIMARY;
+      width: fit-content;
+      padding: 10px;
+    }
+    form {
+      color: $WHITE_PRIMARY;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: $BLACK_SECONDARY;
+      border-radius: 0 10px 10px 10px;
+
+      button {
+        width: 50%;
+        margin: auto;
+      }
     }
   }
 

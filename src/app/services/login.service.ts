@@ -2,13 +2,15 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {User} from "../models/User";
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpParams} from "@angular/common/http";
+import {catchError, map} from "rxjs/operators";
+import {of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  public url = environment.back + "/users/signin";
+  public url = environment.back + "/users/signIn";
   public connectEvent : EventEmitter<boolean> = new EventEmitter<boolean>();
   private connected : boolean = false;
   private actualUser : User = null;
@@ -18,24 +20,24 @@ export class LoginService {
 
   public connect(email: String, password: String) {
 
-    let fetchedUser = new User("tester");
-    fetchedUser.email = "tester";
-    fetchedUser.password = "tester";
-    fetchedUser.alias = 'admin';
+    const parameters = "?email=" + email + "&password=" + password;
 
-    if(fetchedUser.email == email) {
-      if (fetchedUser.password == password) {
-        this.actualUser = fetchedUser;
-        this.connected = true;
-        this.connectEvent.emit(this.connected);
-      }
-    }
-
-    let options = {
-      headers : {},
-      params : new HttpParams({})
-    };
-    this.http.get(this.url, options);
+    return this.http.get(this.url + parameters).pipe(
+      map(
+        (fetchedUser) => {
+        if(fetchedUser) {
+          this.actualUser = User.formatFromBack(fetchedUser);
+          this.connected = true;
+          this.connectEvent.emit(this.connected);
+          console.log(1);
+          return true;
+        }
+        else {
+          console.log(2);
+          return false;
+        }
+      })
+    );
 
   }
 
