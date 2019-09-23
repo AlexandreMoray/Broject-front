@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Project} from "../../models/Project";
 import {ProjectService} from "../../services/project.service";
 import {UserService} from "../../services/user.service";
@@ -14,6 +14,7 @@ import {User} from "../../models/User";
 })
 export class ProjectComponent implements OnInit {
 
+  public note;
   public selectedProject : Project;
   public noteForm = {
     title : "",
@@ -41,8 +42,9 @@ export class ProjectComponent implements OnInit {
   }
 
   addNote() {
-
-    let newNote = new Note(new User("momo"), this.noteForm.title, Number(this.noteForm.priority), this.noteForm.message);
+    let user = new User("momo");
+    user.id = 1;
+    let newNote = new Note(user, this.noteForm.title, Number(this.noteForm.priority), this.noteForm.message);
     this.noteService.post(newNote.formatFromFront(this.selectedProject.id)).subscribe( (r) => { console.log(r)});
   }
 
