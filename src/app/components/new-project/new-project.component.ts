@@ -28,7 +28,7 @@ export class NewProjectComponent implements OnInit {
     startingDate: new Date(),
     endingDate: new Date(),
     visibility: 0,
-    owner: 0,
+    owner: null,
     members: new Array<User>(),
     feed: []
     };
@@ -39,11 +39,11 @@ export class NewProjectComponent implements OnInit {
               private matSnackBar : MatSnackBar) { }
 
   ngOnInit() {
-    this.loadOwnerInMembers();
+    this.loadOwner();
   }
 
-  private loadOwnerInMembers() {
-    this.projectToAdd.members.push( this.loginService.getActualUser() );
+  private loadOwner() {
+    this.projectToAdd.owner = this.loginService.getActualUser();
   }
 
   // Switch tabs [0,1,2]

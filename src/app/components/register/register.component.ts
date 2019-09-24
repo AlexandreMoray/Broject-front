@@ -32,7 +32,8 @@ export class RegisterComponent implements OnInit {
     if(u.firstName.length > 1 && u.alias.length > 1 && u.email.length > 1) {
       if( u.password1.length >= 4 && u.password2.length >= 4 && u.password1 == u.password2) {
         //console.log(this.form);
-        this.userService.post(User.formatFromFront(u));
+        let newUser = new User(this.form.firstName, this.form.lastName, this.form.alias, this.form.email, this.form.password1);
+        this.userService.post(newUser.formatFromFront());
       } else {
         Snackbars.openSnackBar(this.matSnackBar, "Password don't match or are invalid", "OK");
       }

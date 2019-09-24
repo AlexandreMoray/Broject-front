@@ -56,6 +56,12 @@
             <div class="right-container">
               <div class="container1">
                 <h3>Project members:</h3>
+                <div class="members-list" *ngIf="projectToAdd.owner">
+                  <div class="tag blue">
+                    <mat-icon>supervisor_account</mat-icon>
+                    {{projectToAdd.owner.alias}}
+                  </div>
+                </div>
                 <div class="members-list" *ngFor="let member of this.projectToAdd.members">
                   <div class="tag blue">
                     <mat-icon>supervisor_account</mat-icon>
