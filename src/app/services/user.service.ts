@@ -8,7 +8,7 @@ import {User} from '../models/User';
 })
 export class UserService {
 
-  private url = environment.back + "/projects/users";
+  private url = environment.back + "/users";
 
   constructor(private http : HttpClient) {
   }
@@ -21,11 +21,15 @@ export class UserService {
     return this.http.get(this.url + "/alias/" + userAlias);
   }
 
+  getProjects(userId : number) {
+    return this.http.get(this.url + "/project/" + userId);
+  }
+
   getAll() {
     return this.http.get(this.url);
   }
 
-  post(user : User) {
+  post(user : any) {
     return this.http.post(this.url, user);
   }
 

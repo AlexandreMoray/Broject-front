@@ -25,7 +25,7 @@ export class ProjectService {
     return this.http.get(this.url);
   }
 
-  post(project : Project) {
+  post(project : any) {
     return this.http.post(this.url, project);
   }
 

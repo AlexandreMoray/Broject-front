@@ -35,6 +35,10 @@ export class Project {
    */
   public visibility = false;
   /*
+  Active (archived or not)
+   */
+  public active = true;
+  /*
   Owner of the project
    */
   public owner: User = null;
@@ -67,9 +71,27 @@ export class Project {
     project.endingDate = fetchedProject.endingDate;
     project.progress = fetchedProject.progression;
     project.visibility = fetchedProject.visibility == 1 ? true : false;
+    project.owner = User.formatFromBack(fetchedProject.owner);
     project.feed = new Array<Note>();
     project.members = new Array<User>();
     return project;
+  }
+
+  public formatFromFront() {
+    return {
+      id: this.id ? this.id : null,
+      name: this.name,
+      progression: this.progress,
+      startingDate: this.startingDate,
+      endingDate: this.endingDate,
+      active: this.active,
+      pictureId: null,
+      visibility: this.visibility ? 1:0,
+      description: this.description,
+      owner: this.owner.id,
+      feed: this.feed ? this.feed: null,
+      members: this.members ? this.members: null
+    }
   }
 
 

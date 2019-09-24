@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Snackbars } from "../../addons/snackbars";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {UserService} from "../../services/user.service";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-register',
@@ -10,14 +12,16 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class RegisterComponent implements OnInit {
 
   public form = {
-    name : "",
+    firstName : "",
+    lastName : "",
     alias : "",
     email : "",
     password1 : "",
     password2 : ""
   }
 
-  constructor(private matSnackBar : MatSnackBar) { }
+  constructor(private matSnackBar : MatSnackBar,
+              private userService : UserService) { }
 
   ngOnInit() {
   }
@@ -25,9 +29,10 @@ export class RegisterComponent implements OnInit {
   register() {
     let u = this.form;
 
-    if(u.name.length > 1 && u.alias.length > 1 && u.email.length > 1) {
+    if(u.firstName.length > 1 && u.alias.length > 1 && u.email.length > 1) {
       if( u.password1.length >= 4 && u.password2.length >= 4 && u.password1 == u.password2) {
-        console.log(this.form);
+        //console.log(this.form);
+        this.userService.post(User.formatFromFront(u));
       } else {
         Snackbars.openSnackBar(this.matSnackBar, "Password don't match or are invalid", "OK");
       }

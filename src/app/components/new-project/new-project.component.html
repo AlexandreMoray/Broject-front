@@ -56,10 +56,10 @@
             <div class="right-container">
               <div class="container1">
                 <h3>Project members:</h3>
-                <div class="members-list" *ngFor="let member of members">
+                <div class="members-list" *ngFor="let member of this.projectToAdd.members">
                   <div class="tag blue">
                     <mat-icon>supervisor_account</mat-icon>
-                    {{member.name}}
+                    {{member.alias}}
                   </div>
                 </div>
               </div>

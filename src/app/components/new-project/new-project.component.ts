@@ -18,7 +18,6 @@ import {Snackbars} from '../../addons/snackbars';
 export class NewProjectComponent implements OnInit {
 
   public actualTabIndex :number = 0;
-  public members :Array<User> = [];
   public newContributor: String = '';
 
   public projectToAdd = {
@@ -30,24 +29,26 @@ export class NewProjectComponent implements OnInit {
     endingDate: new Date(),
     visibility: 0,
     owner: 0,
-    members: this.members,
+    members: new Array<User>(),
     feed: []
     };
 
-  constructor(private projectService : ProjectService, private userService: UserService, private loginService : LoginService, private matSnackBar : MatSnackBar) { }
+  constructor(private projectService : ProjectService,
+              private userService: UserService,
+              private loginService : LoginService,
+              private matSnackBar : MatSnackBar) { }
 
   ngOnInit() {
-    this.members.push(new User('Thierry'));
-    this.members.push(new User('John'));
+    this.loadOwnerInMembers();
+  }
+
+  private loadOwnerInMembers() {
+    this.projectToAdd.members.push( this.loginService.getActualUser() );
   }
 
   // Switch tabs [0,1,2]
   goNext(index: number) {
     this.actualTabIndex = index;
-  }
-
-  addProject() {
-
   }
 
   // To display the progress bar value.
@@ -64,16 +65,6 @@ export class NewProjectComponent implements OnInit {
   }
 
   onSubmit() {
-    /*console.log("ONSUBMIT : ");
-    console.log(this.loginService.getActualUser(),
-      this.projectToAdd.name.toString(),
-      this.projectToAdd.progress.toString(),
-      this.projectToAdd.startingDate.toString(),
-      this.projectToAdd.endingDate.toString(),
-      this.projectToAdd.members.toString(),
-      this.projectToAdd.feed.toString(),
-      this.projectToAdd.description.toString(),
-      this.projectToAdd.category.toString());*/
 
     let newProject = new Project(
       this.projectToAdd.name,
@@ -87,16 +78,22 @@ export class NewProjectComponent implements OnInit {
       this.projectToAdd.category
       );
     console.log(newProject);
-    this.projectService.post(newProject);
+    this.projectService.post(newProject.formatFromFront()).subscribe(
+      result => {
+        console.log(result);
+      }
+    );
   }
 
   addToMemberList(){
     console.log("addMemberToList : ");
     this.userService.getByAlias(this.newContributor).subscribe(
       (user : User) => {
-        this.members.push(user);
-      }, (err) => {
-        Snackbars.openSnackBar(this.matSnackBar, "Sorry, we can't find this user ...", "OK");
+        if(user) {
+          this.projectToAdd.members.push(user);
+        } else {
+          Snackbars.openSnackBar(this.matSnackBar, "Sorry, we can't find this user ...", "OK");
+        }
       }
     );
   }

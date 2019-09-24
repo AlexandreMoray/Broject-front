@@ -3,6 +3,8 @@ import {Project} from '../../models/Project';
 import {User} from '../../models/User';
 import {Note} from '../../models/Note';
 import {ProjectService} from "../../services/project.service";
+import {UserService} from "../../services/user.service";
+import {LoginService} from "../../services/login.service";
 
 @Component({
   selector: 'app-projects-list',
@@ -14,7 +16,9 @@ export class ProjectsListComponent implements OnInit {
   public projects: Array<Project> = [];
   public progress: 35;
 
-  constructor(private projectService : ProjectService) {
+  constructor(private projectService : ProjectService,
+              private userService: UserService,
+              private loginService: LoginService) {
   }
 
   ngOnInit() {
@@ -22,7 +26,7 @@ export class ProjectsListComponent implements OnInit {
   }
 
   loadProjects() {
-    this.projectService.getAll().subscribe(
+    this.userService.getProjects(this.loginService.getActualUser().id).subscribe(
       (fetchedProjects : Array<Project>) => {
         console.log(fetchedProjects);
 
@@ -34,7 +38,7 @@ export class ProjectsListComponent implements OnInit {
 
         console.log(this.projects);
       }
-    )
+    );
   }
 
   onProgressClicked() {
