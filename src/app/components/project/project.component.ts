@@ -44,8 +44,16 @@ export class ProjectComponent implements OnInit {
         this.noteService.getAllFromProject(this.selectedProject.id).subscribe(
           (fetchedNotes : Array<Note>) => {
             fetchedNotes.forEach(
-            note => {
-              this.selectedProject.feed.push(note);
+              (note:any) => {
+                if(!note.creator.id) {
+                  this.noteService.get(note.id).subscribe(
+                    fetchedNote => {
+                      this.selectedProject.feed.push(Note.formatFromBack(fetchedNote));
+                    }
+                  )
+                } else {
+                  this.selectedProject.feed.push(Note.formatFromBack(note));
+                }
             });
 
           }
