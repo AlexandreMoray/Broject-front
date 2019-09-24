@@ -70,14 +70,15 @@ export class NewProjectComponent implements OnInit {
 
     let newProject = new Project(
       this.projectToAdd.name,
-      this.loginService.getActualUser(),
+      User.formatFromBack(this.projectToAdd.owner),
       this.projectToAdd.progress,
-      this.projectToAdd.startingDate,
-      this.projectToAdd.endingDate,
-      this.projectToAdd.members,
-      this.projectToAdd.feed,
+      new Date(this.projectToAdd.startingDate),
+      new Date(this.projectToAdd.endingDate),
       this.projectToAdd.description,
-      this.projectToAdd.category
+      this.projectToAdd.category ? this.projectToAdd.category : null,
+      this.projectToAdd.visibility == 1,
+      new Array<Note>(),
+      this.projectToAdd.members
       );
 
     this.projectService.post(newProject.formatFromFront()).subscribe(

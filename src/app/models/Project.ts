@@ -58,7 +58,7 @@ export class Project {
               endingDate: Date,
               description: String,
               category: String,
-              visibility: number,
+              visibility: boolean,
               feed: Array<Note>,
               members: Array<User>,
               ) {
@@ -69,7 +69,7 @@ export class Project {
     this.endingDate = endingDate;
     this.description = description;
     this.category = category;
-    this.visibility = visibility == 0;
+    this.visibility = visibility;
     this.feed = feed;
     this.members = members;
   }
@@ -84,8 +84,8 @@ export class Project {
       new Date(fetchedProject.endingDate),
       fetchedProject.description,
       fetchedProject.category ? fetchedProject.category : null,
-      fetchedProject.visibility,
-      new Array<Note>(),
+    fetchedProject.visibility == 1,
+      new Array<Note>(fetchedProject.projectNotes),
       new Array<User>()
     );
 
@@ -108,8 +108,7 @@ export class Project {
       owner: {
         id : this.owner.id
       },
-      feed: this.feed ? this.feed: [],
-      members: this.members ? this.members: []
+      members: null
     }
   }
 

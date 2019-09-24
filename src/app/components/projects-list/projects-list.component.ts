@@ -25,13 +25,15 @@ export class ProjectsListComponent implements OnInit {
   }
 
   loadProjects() {
-    this.userService.getProjects(this.loginService.getActualUser().id).subscribe(
+    this.userService.getOwnedProjects(this.loginService.getActualUser().id).subscribe(
       (fetchedProjects : Array<Project>) => {
         console.log(fetchedProjects);
 
         fetchedProjects.forEach(
           proj => {
-            this.projects.push(Project.formatFromBack(proj));
+            if(proj.id) {
+              this.projects.push(Project.formatFromBack(proj));
+            }
           }
         )
 

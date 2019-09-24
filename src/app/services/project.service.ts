@@ -21,7 +21,6 @@ export class ProjectService {
   }
 
   getAll() {
-
     return this.http.get(this.url);
   }
 

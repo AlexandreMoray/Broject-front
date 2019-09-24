@@ -21,8 +21,8 @@ export class UserService {
     return this.http.get(this.url + "/alias/" + userAlias);
   }
 
-  getProjects(userId : number) {
-    return this.http.get(this.url + "/projects/" + userId);
+  getOwnedProjects(ownerId: number) {
+    return this.http.get(this.url + "/owner/" + ownerId);
   }
 
   getAll() {

@@ -40,14 +40,13 @@ export class ProjectComponent implements OnInit {
     this.projectService.get(id).subscribe(
       fetchedProject => {
         this.selectedProject = Project.formatFromBack(fetchedProject);
-
+        this.selectedProject.feed = new Array<Note>();
         this.noteService.getAllFromProject(this.selectedProject.id).subscribe(
           (fetchedNotes : Array<Note>) => {
             fetchedNotes.forEach(
             note => {
               this.selectedProject.feed.push(note);
             });
-            console.log(this.selectedProject.feed);
 
           }
         )

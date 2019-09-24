@@ -24,7 +24,9 @@ export class Note {
       creator : this.creator,
       priority : this.priority,
       message : this.message,
-      projectId : projectId
+      noteProject : {
+        id : projectId
+      }
     };
 
     console.log("->" + formatedNote);
