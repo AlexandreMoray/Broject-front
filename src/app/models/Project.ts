@@ -51,29 +51,46 @@ export class Project {
    */
   public feed: Array<Note> = [];
 
-  constructor(name: String, owner: User, progress?: number, startingDate?: Date, endingDate?: Date, members?: Array<User>, feed?: Array<Note>, description?: String, category?: String) {
+  constructor(name: String,
+              owner: User,
+              progress: number,
+              startingDate: Date,
+              endingDate: Date,
+              description: String,
+              category: String,
+              visibility: number,
+              feed: Array<Note>,
+              members: Array<User>,
+              ) {
     this.name = name;
-    this.description = description;
-    this.category = category;
+    this.owner = owner;
     this.progress = progress;
     this.startingDate = startingDate;
     this.endingDate = endingDate;
-    this.owner = owner;
-    this.members = members;
+    this.description = description;
+    this.category = category;
+    this.visibility = visibility == 0;
     this.feed = feed;
+    this.members = members;
   }
 
 
   public static formatFromBack(fetchedProject : any) {
-    let project : Project = new Project(fetchedProject.name, fetchedProject.owner);
+    let project : Project = new Project(
+      fetchedProject.name,
+      User.formatFromBack(fetchedProject.owner),
+      fetchedProject.progression,
+      new Date(fetchedProject.startingDate),
+      new Date(fetchedProject.endingDate),
+      fetchedProject.description,
+      fetchedProject.category ? fetchedProject.category : null,
+      fetchedProject.visibility,
+      new Array<Note>(),
+      new Array<User>()
+    );
+
     project.id = fetchedProject.id;
-    project.startingDate = fetchedProject.startingDate;
-    project.endingDate = fetchedProject.endingDate;
-    project.progress = fetchedProject.progression;
-    project.visibility = fetchedProject.visibility == 1 ? true : false;
-    project.owner = User.formatFromBack(fetchedProject.owner);
-    project.feed = new Array<Note>();
-    project.members = new Array<User>();
+
     return project;
   }
 
@@ -88,9 +105,11 @@ export class Project {
       pictureId: null,
       visibility: this.visibility ? 1:0,
       description: this.description,
-      owner: this.owner.id,
-      feed: this.feed ? this.feed: null,
-      members: this.members ? this.members: null
+      owner: {
+        id : this.owner.id
+      },
+      feed: this.feed ? this.feed: [],
+      members: this.members ? this.members: []
     }
   }
 

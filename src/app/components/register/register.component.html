@@ -2,7 +2,10 @@
   <form class="form" (submit)="this.register()">
     <h2>JOIN THE COMMUNITY !</h2>
     <mat-form-field>
-      <input matInput name="Name" placeholder="Name" [(ngModel)]="form.lastName">
+      <input matInput name="First Name" placeholder="First Name" [(ngModel)]="form.firstName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="Last Name" placeholder="Last Name" [(ngModel)]="form.lastName">
     </mat-form-field>
     <mat-form-field>
       <input matInput name="Alias" placeholder="Alias" [(ngModel)]="form.alias">

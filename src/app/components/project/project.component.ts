@@ -16,6 +16,7 @@ import {LoginService} from "../../services/login.service";
 export class ProjectComponent implements OnInit {
 
   public selectedProject : Project;
+  public actualUser : User;
   public noteForm = {
     title : "",
     message : "",
@@ -29,6 +30,7 @@ export class ProjectComponent implements OnInit {
               private loginService : LoginService) { }
 
   ngOnInit() {
+    this.actualUser = this.loginService.getActualUser();
     this.loadProjectInfos();
   }
 
@@ -54,8 +56,8 @@ export class ProjectComponent implements OnInit {
   }
 
   addNote() {
-    let user = this.loginService.getActualUser();
-    let newNote = new Note(user, this.noteForm.title, Number(this.noteForm.priority), this.noteForm.message);
+
+    let newNote = new Note(this.actualUser, this.noteForm.title, Number(this.noteForm.priority), this.noteForm.message);
 
     this.noteService.post(newNote.formatFromFront(this.selectedProject.id)).subscribe(
       (note : any) => {

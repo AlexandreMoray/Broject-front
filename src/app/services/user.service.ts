@@ -22,7 +22,7 @@ export class UserService {
   }
 
   getProjects(userId : number) {
-    return this.http.get(this.url + "/project/" + userId);
+    return this.http.get(this.url + "/projects/" + userId);
   }
 
   getAll() {

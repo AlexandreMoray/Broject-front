@@ -14,7 +14,6 @@ import {LoginService} from "../../services/login.service";
 export class ProjectsListComponent implements OnInit {
 
   public projects: Array<Project> = [];
-  public progress: 35;
 
   constructor(private projectService : ProjectService,
               private userService: UserService,

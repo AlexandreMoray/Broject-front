@@ -26,6 +26,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import { HeaderComponent } from './components/header/header.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { SearchProjectComponent } from './components/search-project/search-project.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     SigninComponent,
     ProjectsListComponent,
     NewProjectComponent,
-    HeaderComponent
+    HeaderComponent,
+    SearchProjectComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import {LoginService} from '../../services/login.service';
 import {ProjectService} from '../../services/project.service';
 import {UserService} from '../../services/user.service';
 import {Snackbars} from '../../addons/snackbars';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-project',
@@ -36,7 +37,8 @@ export class NewProjectComponent implements OnInit {
   constructor(private projectService : ProjectService,
               private userService: UserService,
               private loginService : LoginService,
-              private matSnackBar : MatSnackBar) { }
+              private matSnackBar : MatSnackBar,
+              private router: Router) { }
 
   ngOnInit() {
     this.loadOwner();
@@ -77,10 +79,12 @@ export class NewProjectComponent implements OnInit {
       this.projectToAdd.description,
       this.projectToAdd.category
       );
-    console.log(newProject);
+
     this.projectService.post(newProject.formatFromFront()).subscribe(
       result => {
-        console.log(result);
+        if(result) {
+          this.router.navigate(['/projects']);
+        }
       }
     );
   }

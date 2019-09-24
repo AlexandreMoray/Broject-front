@@ -25,6 +25,10 @@ export class ProjectService {
     return this.http.get(this.url);
   }
 
+  getByName(name : String) {
+    return this.http.get(this.url + "/name/" + name);
+  }
+
   post(project : any) {
     return this.http.post(this.url, project);
   }

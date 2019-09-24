@@ -8,21 +8,19 @@ export class User {
   public email : String = "";
   public password : String = "";
 
-  constructor(firstName: string, lastName? : String, alias? : String, email? : String, password? : String) {
-    this.firstName = this.firstName ? this.firstName : name;
-    this.lastName = this.lastName ? this.lastName : name;
-    this.alias = this.alias ? this.alias : name;
-    this.email = this.email ? this.email : name;
-    this.password = this.password ? this.password : name;
+  constructor(firstName: string, lastName : String, alias : String, email : String, password: String) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.alias = alias;
+    this.email = email;
+    this.password = password;
   }
 
   public static formatFromBack(fetchedUser : any) {
-    let user = new User(fetchedUser.firstName);
-    user.lastName = fetchedUser.lastName;
+    console.log(fetchedUser);
+
+    let user = new User(fetchedUser.firstName, fetchedUser.lastName, fetchedUser.alias, fetchedUser.email, fetchedUser.password);
     user.id = fetchedUser.id;
-    user.alias = fetchedUser.alias;
-    user.email = fetchedUser.email;
-    user.password = fetchedUser.password;
 
     return user;
   }
