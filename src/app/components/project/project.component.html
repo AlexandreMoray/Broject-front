@@ -1,4 +1,4 @@
-<div class="project-container">
+<div class="project-container" *ngIf="selectedProject">
   <div class="right-container">
     <div class="project-infos">
       <div class="title">
@@ -24,31 +24,35 @@
           Progress : {{selectedProject.progress}}%
         </div>
       </div>
+      <div class="description">
+        <h3>Description</h3>
+        <p>{{selectedProject.description}}</p>
+      </div>
     </div>
     <div class="project-members">
       <h3>Project team</h3>
       <div class="list">
         <div class="tag blue">
           <mat-icon>supervised_user_circle</mat-icon>
-          {{selectedProject.owner.name}}
+          {{selectedProject.owner.alias}}
         </div>
         <div *ngFor="let member of selectedProject.members" class="tag blue">
           <mat-icon>supervisor_account</mat-icon>
-          {{member.name}}
+          {{member.alias}}
         </div>
       </div>
     </div>
     <div class="add-note">
       <h3>Add a note</h3>
-      <form>
+      <form class="form" (submit)="addNote()" *ngIf="actualUser">
         <mat-form-field>
-          <input matInput class="title" placeholder="Title"/>
+          <input matInput name="title" class="title" placeholder="Title" [(ngModel)]="noteForm.title"/>
         </mat-form-field>
         <mat-form-field>
-          <textarea matInput class="note" placeholder="Write your note here..."></textarea>
+          <textarea matInput name="note" class="note" placeholder="Write your note here..." [(ngModel)]="noteForm.message"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Select priority">
+          <mat-select name="priority" placeholder="Select priority" [(ngModel)]="noteForm.priority">
             <mat-option value="1">Major</mat-option>
             <mat-option value="2">Important</mat-option>
             <mat-option value="3">Basic</mat-option>
@@ -57,6 +61,9 @@
         </mat-form-field>
         <button mat-stroked-button class="add" type="submit">ADD</button>
       </form>
+      <div class="form" *ngIf="!actualUser">
+        You must me Signed In in order to write a note.
+      </div>
     </div>
   </div>
   <div class="left-container">
@@ -69,15 +76,15 @@
               <h4>{{note.title}}</h4>
               <div class="tag red">
                 <mat-icon>star</mat-icon>
-                {{note.priority}}
+                {{this.translatePriority(note.priority)}}
               </div>
             </div>
-            <p>{{note.comment}}</p>
+            <p>{{note.message}}</p>
           </div>
           <div class="infos">
             <div class="tag blue">
               <mat-icon>supervisor_account</mat-icon>
-              {{note.owner.name}}
+              {{note.creator.alias}}
             </div>
             <div class="tag green">
               <mat-icon>calendar_today</mat-icon>

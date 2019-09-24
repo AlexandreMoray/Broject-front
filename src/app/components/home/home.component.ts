@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {ProjectService} from "../../services/project.service";
+import {Project} from "../../models/Project";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Snackbars} from "../../addons/snackbars";
 
 @Component({
   selector: 'app-home',
@@ -11,15 +15,18 @@ export class HomeComponent implements OnInit {
   private projectField : String = "";
 
   constructor(
-    private router : Router
+    private router : Router,
+    private projectService : ProjectService,
+    private matSnackBar : MatSnackBar
   ) { }
 
   ngOnInit() {
   }
 
   projectSearch() {
-
-    this.router.navigate(["/projects"]);
+    if(this.projectField.length > 0) {
+      this.router.navigate(['/search/' + this.projectField]);
+    }
   }
 
 }

@@ -1,26 +1,26 @@
 <div class="register-container">
-  <div class="form">
+  <form class="form" (submit)="this.register()">
     <h2>JOIN THE COMMUNITY !</h2>
     <mat-form-field>
-      <input matInput class="First name" placeholder="First name">
+      <input matInput name="First Name" placeholder="First Name" [(ngModel)]="form.firstName">
     </mat-form-field>
     <mat-form-field>
-      <input matInput class="Last name" placeholder="Last name">
+      <input matInput name="Last Name" placeholder="Last Name" [(ngModel)]="form.lastName">
     </mat-form-field>
     <mat-form-field>
-      <input matInput class="Pseudo" placeholder="Pseudo">
+      <input matInput name="Alias" placeholder="Alias" [(ngModel)]="form.alias">
     </mat-form-field>
     <mat-form-field>
-      <input matInput class="Email" type="email" placeholder="Email">
+      <input matInput name="Email" type="email" placeholder="Email" [(ngModel)]="form.email">
     </mat-form-field>
     <mat-form-field>
-      <input matInput class="Password" type="password" placeholder="Password">
+      <input matInput name="Password" type="password" placeholder="Password" [(ngModel)]="form.password1">
     </mat-form-field>
     <mat-form-field>
-      <input matInput class="Repeat Password" type="password" placeholder="Repeat Password">
+      <input matInput name="Repeat Password" type="password" placeholder="Repeat Password" [(ngModel)]="form.password2">
     </mat-form-field>
     <button mat-button type="submit">
       Register
     </button>
-  </div>
+  </form>
 </div>

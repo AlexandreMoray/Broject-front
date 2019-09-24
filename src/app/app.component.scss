@@ -2,7 +2,8 @@
 @import '../assets/style/fonts';
 
 #main-container {
-  background-color: $GREY_SECONDARY;
+  background-image: url('../assets/images/grey-gradient-background.jpg');
+  background-size: cover;
   height: 90vh;
   width: 100%;
 }

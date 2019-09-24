@@ -1,5 +1,14 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {User} from "../../models/User";
+import {NgForm} from '@angular/forms';
+import {MatButton, MatSnackBar} from '@angular/material';
+import {Project} from '../../models/Project';
+import {Note} from '../../models/Note';
+import {LoginService} from '../../services/login.service';
+import {ProjectService} from '../../services/project.service';
+import {UserService} from '../../services/user.service';
+import {Snackbars} from '../../addons/snackbars';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-project',
@@ -10,22 +19,38 @@ import {User} from "../../models/User";
 export class NewProjectComponent implements OnInit {
 
   public actualTabIndex :number = 0;
-  public members :Array<User> = [];
+  public newContributor: String = '';
 
-  constructor() { }
+  public projectToAdd = {
+    name: '',
+    description:'',
+    progress: 0,
+    category: '',
+    startingDate: new Date(),
+    endingDate: new Date(),
+    visibility: 0,
+    owner: null,
+    members: new Array<User>(),
+    feed: []
+    };
+
+  constructor(private projectService : ProjectService,
+              private userService: UserService,
+              private loginService : LoginService,
+              private matSnackBar : MatSnackBar,
+              private router: Router) { }
 
   ngOnInit() {
-    this.members.push(new User('Thierry'));
-    this.members.push(new User('John'));
+    this.loadOwner();
+  }
+
+  private loadOwner() {
+    this.projectToAdd.owner = this.loginService.getActualUser();
   }
 
   // Switch tabs [0,1,2]
   goNext(index: number) {
     this.actualTabIndex = index;
-  }
-
-  addProject() {
-
   }
 
   // To display the progress bar value.
@@ -39,6 +64,43 @@ export class NewProjectComponent implements OnInit {
     else {
       return value;
     }
+  }
+
+  onSubmit() {
+
+    let newProject = new Project(
+      this.projectToAdd.name,
+      User.formatFromBack(this.projectToAdd.owner),
+      this.projectToAdd.progress,
+      new Date(this.projectToAdd.startingDate),
+      new Date(this.projectToAdd.endingDate),
+      this.projectToAdd.description,
+      this.projectToAdd.category ? this.projectToAdd.category : null,
+      this.projectToAdd.visibility == 1,
+      new Array<Note>(),
+      this.projectToAdd.members
+      );
+
+    this.projectService.post(newProject.formatFromFront()).subscribe(
+      result => {
+        if(result) {
+          this.router.navigate(['/projects']);
+        }
+      }
+    );
+  }
+
+  addToMemberList(){
+    console.log("addMemberToList : ");
+    this.userService.getByAlias(this.newContributor).subscribe(
+      (user : User) => {
+        if(user) {
+          this.projectToAdd.members.push(user);
+        } else {
+          Snackbars.openSnackBar(this.matSnackBar, "Sorry, we can't find this user ...", "OK");
+        }
+      }
+    );
   }
 
 }

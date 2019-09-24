@@ -3,7 +3,7 @@
   <h1>Mes Projects</h1>
 
   <div class="list">
-    <div *ngFor="let p of projects" class="project-card">
+    <div *ngFor="let p of projects" class="project-card" routerLink="/project/{{p.id}}">
       <h2> {{p.name}}</h2>
       <div class="projectInformation">
         <div class="projectLogo">
@@ -11,7 +11,7 @@
         </div>
 
         <ul>
-          <li>Date de début : {{p.startingDate.toLocaleDateString()}}</li>
+          <li>Date de début : {{p.startingDate | date:'dmy'}}</li>
           <li>Date de fin : {{p.endingDate.toLocaleDateString()}}</li>
           <li>Notes : {{p.feed.length}}</li>
         </ul>
